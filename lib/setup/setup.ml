@@ -29,7 +29,20 @@ let file_templates day =
     {
       name = create_path day "main.ml";
       content = {|
-let () = print_endline "Hello World"
+
+
+
+let one =
+  (* solve one*)
+  0
+
+let two =
+  (* solve one*)
+  0
+
+let () =
+  print_endline @@ Printf.sprintf "%d" one;
+  print_endline @@ Printf.sprintf "%d" two
   |};
     };
     { name = create_path day "input"; content = "" };
