@@ -1,4 +1,6 @@
+
 (executable
- (public_name aoc_utils)
+ (public_name Day25)
  (name main)
  (libraries lib))
+  
