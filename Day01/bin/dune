@@ -1,0 +1,5 @@
+(executable
+ (name main)
+ (public_name Day01)
+ (libraries lib impl))
+

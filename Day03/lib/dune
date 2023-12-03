@@ -1,0 +1,5 @@
+
+(library
+ (name Day03)
+ (libraries lib re))
+  
