@@ -8,15 +8,23 @@ let file_as_str file =
   close_in chan;
   lines
 
-let input_as_str () =
-  file_as_str "input"
+let input_as_str () = file_as_str "input"
 
 let test_one_as_str day =
   let path = Printf.sprintf "../../../../%s/test_one" day in
   file_as_str path
 
-let test_two_as_str day = 
-  let path = Printf.sprintf "../../../../%s/test_two" day in 
+let test_two_as_str day =
+  let path = Printf.sprintf "../../../../%s/test_two" day in
   file_as_str path
 
 let input_as_int () = List.map int_of_string @@ input_as_str ()
+
+let list_of_list delimiter list =
+  let rec group current outer = function
+    | [] -> List.rev @@ (current :: outer)
+    | line :: rest when line = delimiter ->
+        group [] ((List.rev current) :: outer) rest
+    | line :: rest -> group (line :: current) outer rest
+  in
+  group [] [] list
