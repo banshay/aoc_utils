@@ -19,7 +19,7 @@
  (name advent_of_code)
  (synopsis "A short synopsis")
  (description "A longer description")
- (depends ocaml dune (alcotest :with-test))
+ (depends ocaml dune lwt (alcotest :with-test))
  (tags
   (topics "to describe" your project)))
 

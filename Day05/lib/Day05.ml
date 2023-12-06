@@ -10,10 +10,10 @@ module Garden = struct
     humid_to_location: (int, int) Hashtbl.t;
   }
 
-  let create input =
-    Lib.Util.list_of_list "" input
-    |> 
-
+  (* let create input = *)
+  (*   Lib.Util.list_of_list "" input *)
+  (*   |>  *)
+  (**)
 
 end
 

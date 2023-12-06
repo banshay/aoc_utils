@@ -88,7 +88,7 @@ let one_test () =
 let two_expected = 0
 
 let two_test () =
-  let actual = %s.two @@ Lib.Util.test_two_as_str "%s" in
+  let actual = %s.two @@ Lib.Util.test_one_as_str "%s" in
   Alcotest.(check int) "same int" two_expected actual
 
 let () =

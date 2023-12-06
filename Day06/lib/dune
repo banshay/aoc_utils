@@ -1,0 +1,5 @@
+(library
+ (name Day06)
+ (libraries lib re lwt lwt_ppx cohttp-lwt-unix)
+ (preprocess
+  (pps lwt_ppx)))

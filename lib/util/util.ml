@@ -1,3 +1,30 @@
+type direction = UP | DOWN
+
+let rec range ?(direction = UP) ?(stop = 0) start =
+  if (stop <= start && direction = UP) || (start <= stop && direction = DOWN)
+  then [ start ]
+  else
+    match direction with
+    | UP -> start :: range (start + 1) ~stop ~direction
+    | DOWN -> start :: range (start - 1) ~stop ~direction
+
+let n_ranges ?(direction = UP) ?(stop = 0) n start =
+  let _, higher =
+    match direction with UP -> (start, stop) | DOWN -> (stop, start)
+  in
+  let chunk_size =
+    Float.to_int @@ Float.ceil @@ (Int.to_float higher /. Int.to_float n)
+  in
+  List.init n (fun cnt ->
+      match direction with
+      | UP ->
+          range ~direction (cnt * chunk_size)
+            ~stop:((cnt * chunk_size) + chunk_size)
+      | DOWN ->
+          range ~direction
+            ~stop:((cnt * chunk_size) - chunk_size)
+            (cnt * chunk_size))
+
 let file_as_str file =
   let chan = open_in file in
   let rec read_line read_lines channel =
@@ -24,7 +51,13 @@ let list_of_list delimiter list =
   let rec group current outer = function
     | [] -> List.rev @@ (current :: outer)
     | line :: rest when line = delimiter ->
-        group [] ((List.rev current) :: outer) rest
+        group [] (List.rev current :: outer) rest
     | line :: rest -> group (line :: current) outer rest
   in
   group [] [] list
+
+let time f x =
+  let t = Sys.time () in
+  let fx = f x in
+  Printf.printf "Time: %fs\n" (Sys.time () -. t);
+  fx
