@@ -37,6 +37,10 @@ let file_as_str file =
 
 let input_as_str () = file_as_str "input"
 
+let test_as_str day filename =
+  let path = Printf.sprintf "../../../../%s/%s" day filename in
+  file_as_str path
+
 let test_one_as_str day =
   let path = Printf.sprintf "../../../../%s/test_one" day in
   file_as_str path

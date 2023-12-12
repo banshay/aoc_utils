@@ -8,7 +8,7 @@ let test_range2 () =
 let test_list_of_list () =
   Alcotest.(check (list (list string)))
     "same lists"
-    [ [ "hello"; "world" ]; [ "advent"; "of"; "code" ]; [ "2023" ] ]
+    [ [ "2023" ]; [ "advent"; "of"; "code" ]; [ "hello"; "world" ] ]
     (Lib.Util.list_of_list ""
        [ "hello"; "world"; ""; "advent"; "of"; "code"; ""; "2023" ])
 
