@@ -13,12 +13,6 @@ module Garden = struct
     humid_to_location : entry list;
   }
 
-<<<<<<< Updated upstream
-  (* let create input = *)
-  (*   Lib.Util.list_of_list "" input *)
-  (*   |>  *)
-  (**)
-=======
   let two_range_overlap r1 r2 =
     let low1, high1 = r1 in
     let low2, high2 = r2 in
@@ -32,7 +26,6 @@ module Garden = struct
     let r1_l, r1_h = r1 in
     let r2_l, r2_h = r2 in
     (Int.max r1_l r2_l, Int.min r1_h r2_h)
->>>>>>> Stashed changes
 
   let ranges_from_entries entries seed_range =
     let number, range = seed_range in

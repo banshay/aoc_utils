@@ -33,7 +33,7 @@ let file_as_str file =
   in
   let lines = read_line [] chan in
   close_in chan;
-  lines
+  List.rev lines
 
 let input_as_str () = file_as_str "input"
 
@@ -65,3 +65,11 @@ let time f x =
   let fx = f x in
   Printf.printf "Time: %fs\n" (Sys.time () -. t);
   fx
+
+let pp_tuple ?f (a, b) =
+  let a, b = match f with None -> (a, b) | Some f -> f (a, b) in
+  Printf.sprintf "(%s, %s)" a b
+
+let pp_list ?f delim list =
+  String.concat delim
+    (List.map (fun item -> match f with None -> item | Some f -> f item) list)
