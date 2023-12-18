@@ -44,7 +44,7 @@ let () =
       content = Printf.sprintf {|
 (library
  (name %s)
- (libraries lib re))
+ (libraries lib re easy_logging))
   |} day;
     };
     {

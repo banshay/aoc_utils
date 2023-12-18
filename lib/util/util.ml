@@ -61,3 +61,19 @@ let time f x =
   let fx = f x in
   Printf.printf "Time: %fs\n" (Sys.time () -. t);
   fx
+
+let unique (type a) (list : a list) =
+  let module S = Set.Make (struct
+    type t = a
+
+    let compare = compare
+  end) in
+  let rec remove acc seen = function
+    | [] -> List.rev acc
+    | a :: rest when S.mem a seen -> remove acc seen rest
+    | a :: rest -> remove (a :: acc) (S.add a seen) rest
+  in
+  remove [] S.empty list
+
+let pp_list delim f list =
+  String.concat delim (List.map (f) list)

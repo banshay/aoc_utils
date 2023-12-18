@@ -1,0 +1,6 @@
+
+(library
+ (name Day07)
+ (preprocess (pps ppx_deriving.eq ppx_deriving.ord ppx_deriving.show))
+ (libraries lib re))
+  

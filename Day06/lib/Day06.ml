@@ -74,7 +74,7 @@ let one _input =
             race.time race.distance count;
           count)
         races
-      |> List.fold_left (fun acc x -> acc * x) 1)
+      |> List.fold_left ( * ) 1)
     _input
 
 let two _input =
@@ -94,7 +94,7 @@ let two _input =
         in
 
         let%lwt results = List.map task range_chunks |> Lwt.all in
-        Lwt.return @@ List.fold_left (fun acc a -> acc + a) 0 results)
+        Lwt.return @@ List.fold_left (+) 0 results)
       _input
   in
   Lwt_main.run main
