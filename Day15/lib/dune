@@ -1,0 +1,6 @@
+
+(library
+ (name Day15)
+ (preprocess (pps ppx_deriving.show))
+ (libraries lib re easy_logging))
+  
